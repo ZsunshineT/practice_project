@@ -1,0 +1,4 @@
+target
+.idea/*
+*.iml
+/group-oauth-dto/target/

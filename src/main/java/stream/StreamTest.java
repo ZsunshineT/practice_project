@@ -15,8 +15,7 @@ public class StreamTest {
     static List<Vehicle> vehicles = new ArrayList<>();
 
     public static void main(String[] args) {
-        init();
-        test1();
+        test3();
     }
     public static void test1(){
         //遍历列表
@@ -70,6 +69,39 @@ public class StreamTest {
         vehicles.add(new Vehicle("KPTS0A1K87P080237","19645871598","sanri1993",1,3.0,imeis.get(2)));
         vehicles.add(new Vehicle("KNAJC526975740490","15879146974","李种",1,3.9,imeis.get(3)));
         vehicles.add(new Vehicle("KNAJC521395884849","13520184976","袁绍",2,4.9,imeis.get(4)));
+    }
+
+    public static void test2(){
+        Map<String, String> grades = new HashMap(){
+            {
+                put("1", "A");
+                put("2", "B");
+                put("3", "A");
+                put("4", "C");
+                put("5", "A");
+                put("6", "B");
+            }
+        };
+        Map<String, List<String>> stat = grades.entrySet().stream().collect(Collectors.groupingBy(
+                Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())));
+        System.out.println(stat);
+    }
+    public static void test3(){
+        //forEach
+        Random random = new Random();
+        random.ints().limit(3).forEach(System.out::println);
+        // map获取对应的平方数
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        List<Integer> squaresList = numbers.stream().map( i -> i*i).collect(Collectors.toList());
+        System.out.println(squaresList);
+        //filter获取空字符串的数量
+        List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        long count = strings.stream().filter(string -> string.isEmpty()).count();
+        System.out.println(count);
+        //limit打印前3个数据
+        List<String> strings1 = strings.stream().limit(3).collect(Collectors.toList());
+        System.out.println(strings1);
+
     }
 
 

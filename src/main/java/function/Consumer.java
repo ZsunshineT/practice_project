@@ -5,7 +5,7 @@ package function;
  * Created by zhangteng on 2020/5/20.
  */
 @FunctionalInterface
-public interface Consumer {
+public interface Consumer<T> {
     String buy(String name);
     // java.lang.Object中的方法不是抽象方法
     boolean equals(Object var1);

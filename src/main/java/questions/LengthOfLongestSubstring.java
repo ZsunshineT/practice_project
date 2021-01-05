@@ -11,9 +11,16 @@ public class LengthOfLongestSubstring {
     }
     public static int lengthOfLongestSubstring(String str) {
         char[] chars = str.toCharArray();
+        int result = 0;
         for(int i = 0;i < chars.length;i++){
-
+            for(int j=i+1;j < chars.length;j++){
+                if(chars[i] == chars[j]){
+                    if(result < j-i){
+                        result = j-i;
+                    }
+                }
+            }
         }
-        return 0;
+        return result;
     }
 }

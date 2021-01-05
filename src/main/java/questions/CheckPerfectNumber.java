@@ -1,6 +1,8 @@
 package questions;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Description:
@@ -11,34 +13,28 @@ import java.util.Date;
 public class CheckPerfectNumber {
     public static void main(String[] args) {
         int num = 28;
-        int sum = 0;
+        List<Integer> temp = new ArrayList<Integer>();
         long startTime = new Date().getTime();
-        System.out.println(checkPerfectNumber1(num,sum));
+        System.out.println(checkPerfectNumber(num));
         long endTime = new Date().getTime();
         System.out.println(endTime-startTime);
     }
 
     private static boolean checkPerfectNumber(int num) {
         int sum = 0;
-        for(int i=1;i<=num/2;i++){
-            if(num%i == 0){
-                sum = sum + i;
+        if(num < 2){
+            return false;
+        }else{
+            for(int i=2;i<=Math.sqrt(num);i++){
+                if(num%i == 0){
+                    sum = sum + i + num/i;
+                }
             }
-        }
-        if(sum == num && num != 1){
-            return true;
+            sum = sum + 1;
+            if(sum == num && num != 1){
+                return true;
+            }
         }
         return false;
-    }
-    private static int checkPerfectNumber1(int num,int sum) {
-        for(int i=num/2;i>=2;i--){
-            if(num%i == 0){
-                sum = sum + i;
-                System.out.print(i+"-");
-                checkPerfectNumber1(i,sum);
-                break;
-            }
-        }
-        return sum;
     }
 }

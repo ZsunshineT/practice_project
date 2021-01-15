@@ -7,7 +7,7 @@ package questions;
 public class LengthOfLongestSubstring {
     public static void main(String[] args) {
         String str = "abcsdd";
-        lengthOfLongestSubstring(str);
+        System.out.println(lengthOfLongestSubstring(str));
     }
     public static int lengthOfLongestSubstring(String str) {
         char[] chars = str.toCharArray();

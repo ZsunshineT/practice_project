@@ -3,7 +3,9 @@ package questions;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import freemarker.template.utility.StringUtil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Description:
@@ -16,8 +18,8 @@ public class PrefixesDivBy5 {
         prefixesDivBy5(param);
     }
 
-    private static boolean[] prefixesDivBy5(int[] param) {
-        boolean[] result = new boolean[param.length];
+    private static List<Boolean> prefixesDivBy5(int[] param) {
+        List<Boolean> result = new ArrayList<>();
         boolean flag = false;
         int j = 0;
         for(int i = 0;i<param.length;i++){
@@ -26,13 +28,13 @@ public class PrefixesDivBy5 {
                     j = i;
                     flag = true;
                 }else{
-                    result[i] = false;
+                    result.add(false);
                 }
             }else{
                 int[] temp = Arrays.copyOfRange(param,j, i);
                 int num = twoTten(temp);
                 if(num%5 == 0){
-                    result[i] = true;
+                    result.add(true);
                 }
             }
         }
